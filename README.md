@@ -5,10 +5,10 @@ Processing Library to connect to [Cosm][1] (Pachube)
 
 Uses the Apache [HttpClient][2] for Java. Also uses a [JSON Processing][3] lib.
 
-##**Methods for GETting data**
+####**Methods for GETting data**
 
 
-##**Methods for PUTting data**
+####**Methods for PUTting data**
 
 
 [1]: http://cosm.com     "Cosm"
