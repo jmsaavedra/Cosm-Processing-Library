@@ -22,7 +22,7 @@ void setup() {
 }
 
 void draw() {
-  //awesome stuff goes here
+  // something amazing
 }
 
 void requestData() {
