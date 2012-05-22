@@ -1,22 +1,25 @@
-/* 
-Cosm example to manually pull the current value of any datastream
-in the simplest possible way.
+/****************
+ Cosm example to manually update a datastream with a random value.
 
-http://cosm.com
-*/
+ http://cosm.com
+ ****************/
+
 import cosm.*;
 
 DataOut feed;
 
-//String apiKey = "YOUR_COSM_API_KEY";
-String apiKey = "HF9qW31hUvgQ9b9RnUoM5za3BrCSAKxDd1l3MVpLS094ST0g";
-String feedId = "60410"; //feed URL: http://cosm.com/feeds/37080
+String apiKey = "YOUR_COSM_API_KEY";
+String feedId = "YOUR_FEED_ID";
 
 void setup() {
   
-  feed = new DataOut(this, apiKey, feedId);
-  feed.setVerbose(true);
-  feed.update(0, random(1023)); //send request
+  feed = new DataOut(this, apiKey, feedId);  //intantiate feed
+  feed.setVerbose(false);  //optional debug info
+  
+  float randomVal = random(1023); //create a random value
+  feed.updateStream(1, randomVal); //send request (datastream id, new value)
+  
+  println(randomVal); //look at number in processing, then check your feed on cosm!
 }
 
 void draw() {

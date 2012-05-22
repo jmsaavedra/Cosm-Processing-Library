@@ -1,22 +1,23 @@
-/* 
-Cosm example to pull all metadata from a feed and then from a datastream.
-All methods return a String, unless otherwise noted.
+/****************
+ Cosm example to pull all metadata from a feed and then from a datastream.
+ All methods return a String, unless otherwise noted.
+ 
+ http://cosm.com
 
-http://cosm.com
-jos.ph 2012 
-*/
+ jos.ph may 2012 
+ ****************/
+
 import cosm.*;
 
 DataIn feed;
 
-//String apiKey = "YOUR_COSM_API_KEY";
-String apiKey = "HF9qW31hUvgQ9b9RnUoM5za3BrCSAKxDd1l3MVpLS094ST0g";
-String feedId = "58023"; //feed URL: https://cosm.com/feeds/58023
+String apiKey = "YOUR_COSM_API_KEY";
+String feedId = "504"; //feed URL: https://cosm.com/feeds/58023
 
 void setup() {
 
   feed = new DataIn(this, apiKey, feedId); //instantiate feed
-  feed.setVerbose(true); //optional debug info toggle
+  feed.setVerbose(false); //optional debug info toggle
   requestData();
 }
 
@@ -48,18 +49,20 @@ void requestData() {
   println("longitude: "+       feed.getLon());  //returns a double
   println("exposure: "+        feed.getExposure());
   println("datastreamCount: "+ feed.getDatastreamCount());
-  
+
   println("\n--- datastream info ---");
-  
+
   int currDatastream = 0;
-  
+
   String id = feed.getStreamId(currDatastream);
-  String lastUpdate = feed.getLastUpdateTimestamp(currDatastream);
-  println("Datastream '"+ id +"' was last updated at "+ lastUpdate);
+  println("datastream id: "+ id);
   
+  String lastUpdate = feed.getLastUpdateTimestamp(currDatastream);
+  println("last updated at: "+ lastUpdate);
+
   float currentVal = feed.getValue(currDatastream);    //returns a float
   println("currVal: "+currentVal);
-  
+
   float maxVal = feed.getStreamMaxVal(currDatastream); //returns a float
   println("maxVal: "+maxVal);
 

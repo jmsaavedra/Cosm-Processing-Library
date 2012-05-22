@@ -1,15 +1,17 @@
-/* 
-Cosm example to manually pull the current value of any datastream
-in the simplest possible way.
+/****************
+ Cosm example to manually pull the current value of any datastream
+ in the simplest possible way.
 
-http://cosm.com
-*/
+ In order to read a feed from Cosm, you need an API Key.
+
+ http://cosm.com
+ ****************/
+
 import cosm.*;
 
 DataIn feed;
 
-//String apiKey = "YOUR_COSM_API_KEY";
-String apiKey = "HF9qW31hUvgQ9b9RnUoM5za3BrCSAKxDd1l3MVpLS094ST0g";
+String apiKey = "YOUR_COSM_API_KEY";
 String feedId = "37080"; //feed URL: http://cosm.com/feeds/37080
 
 void setup() {
@@ -22,15 +24,15 @@ void draw() {
   //awesome stuff goes here
 }
 
-void requestData(){
+void requestData() {
 
   feed.connect(); //send request
-  
-  int currDataStream = 0;               //getValue by stream number (int)
-  //String currDataStream = "Cactus";   //or by id name! (String)
-  
-  float myVariable = feed.getValue(currDataStream); /* get current value */
 
-  println("Datastream '"+ currDataStream +"' current value: ");
+  int thisDatastream = 0;               //getValue by stream number (int)
+  //String thisDatastream = "JadePlant";   //or by id name! (String)
+
+  float myVariable = feed.getValue(thisDatastream); /* get current value */
+
+  println("Datastream "+ thisDatastream +" current value: ");
   println(myVariable);
 }

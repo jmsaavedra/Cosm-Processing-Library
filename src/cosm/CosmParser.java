@@ -1,14 +1,13 @@
 package cosm;
 
-
 import java.io.*;
 import java.util.Vector;
 import processing.core.*;
 import org.json.*;
-@SuppressWarnings("unused")
 
+@SuppressWarnings("unused")
 public class CosmParser {
-	
+
 	String disposition;
 	String elevation;
 	double latitude;
@@ -17,6 +16,12 @@ public class CosmParser {
 	String domain;
 	String locationName;
 	int datastreamCount;
+
+	/*
+	 * String disposition = null; String elevation = null; double latitude =
+	 * 0.0f; double longitude = 0.0f; String exposure = null; String domain =
+	 * null; String locationName = null; int datastreamCount = 0;
+	 */
 
 	DataIn myParent;
 
@@ -30,11 +35,14 @@ public class CosmParser {
 
 	public CosmParser(DataIn theParent, JSONObject root) {
 		myParent = theParent;
+		data = root;
 		parseLocation(root);
 		parseStreams(root);
 	}
 
 	private void parseLocation(JSONObject data) {
+		if (myParent.verbose)
+			System.out.println("CosmParser: parseLocation()");
 		JSONObject location = data.getJSONObject("location");
 		@SuppressWarnings("static-access")
 		String[] rows = location.getNames(location);
@@ -56,11 +64,18 @@ public class CosmParser {
 				locationName = location.getString("name");
 		}
 	}
-	
+
 	// ------- datastream parsing -------//
+	// --- get count
+	public int getDataStreamCount() {
+		JSONArray streams = data.getJSONArray("datastreams");
+		datastreamCount = streams.length();
+		return datastreamCount;
+	}
+
 	// --- identify, parse all datastreams
 	private void parseStreams(JSONObject data) {
-
+		if(myParent.verbose) System.out.println("CosmParser: parseStreams()\n\n\n");
 		// TODO: make this work with ids that are Strings
 		JSONArray streams = data.getJSONArray("datastreams");
 		datastreamCount = streams.length();
@@ -101,54 +116,52 @@ public class CosmParser {
 			}
 		}
 	}
-	
-	//--- get last time updated
+
+	// --- get last time updated
 	public String getLastUpdateTimestamp(int id) {
 		String data;
 		data = updatedAt.get(id);
 		return data;
 	}
-	//TODO: find solution- can't overload a method of return type String...
-	/*public static String getLastUpdateTimestamp(String id) {
-		String data = null;
-		if (idn.contains(id)) {
-			int index = idn.indexOf(id);
-			data = updatedAt.get(index);
-		} else
-		return data;
-	}*/
-	
-	//--- get stream Id Name
-	public String getStreamId (int id) {
+
+	// TODO: find solution- can't overload a method of return type String...
+	/*
+	 * public static String getLastUpdateTimestamp(String id) { String data =
+	 * null; if (idn.contains(id)) { int index = idn.indexOf(id); data =
+	 * updatedAt.get(index); } else return data; }
+	 */
+
+	// --- get stream Id Name
+	public String getStreamId(int id) {
 		String data;
 		data = idn.get(id);
 		return data;
 	}
-	//TODO: find solution- can't overload a method of return type String...		
-	/*public String getStreamId (String id) {
-		String data = null;
-		if (idn.contains(id)) {
-			int index = idn.indexOf(id);
-			data = idn.get(index);
-		} else
-		return data;
-	}*/
-	
-	//--- get stream value (alternate method, not used in examples)
+
+	// TODO: find solution- can't overload a method with return type String...
+	/*
+	 * public String getStreamId (String id) { String data = null; if
+	 * (idn.contains(id)) { int index = idn.indexOf(id); data = idn.get(index);
+	 * } else return data; }
+	 */
+
+	// --- get stream value (alternate method, not used in examples)
 	public float getStreamCurrVal(int id) {
 		float data = 0.0f;
 		String d = currVal.get(id);
 		data = Float.valueOf(d.trim()).floatValue();
 		return data;
 	}
-	//--- get stream max val
+
+	// --- get stream max val
 	public float getStreamMaxVal(int id) {
 		float data = 0.0f;
 		String d = maxVal.get(id);
 		data = Float.valueOf(d.trim()).floatValue();
 		return data;
 	}
-	//--- get stream min val
+
+	// --- get stream min val
 	public float getStreamMinVal(int id) {
 		float data = 0.0f;
 		String d = minVal.get(id);
@@ -156,5 +169,26 @@ public class CosmParser {
 		return data;
 	}
 
-	//--- TODO:get stream tags
+	// --- TODO:get stream tags
+
+	public void reset() { //--old test, not needed--
+
+		if (!idn.isEmpty()) {
+			if (myParent.verbose) System.out.println("CosmParser: reset()");
+			updatedAt.clear();
+			currVal.clear();
+			idn.clear();
+			maxVal.clear();
+			minVal.clear();
+
+			disposition = null;
+			elevation = null;
+			latitude = 0.0f;
+			longitude = 0.0f;
+			exposure = null;
+			domain = null;
+			locationName = null;
+			datastreamCount = 0;
+		}
+	}
 }

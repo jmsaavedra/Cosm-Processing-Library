@@ -1,14 +1,14 @@
-/* 
+/****************
  Simple way to get all datastreams from the same feed with a for loop.
  
  http://cosm.com
- */
+ ****************/
+ 
 import cosm.*;
 
 DataIn feed;
 
-//String apiKey = "YOUR_COSM_API_KEY";
-String apiKey = "HF9qW31hUvgQ9b9RnUoM5za3BrCSAKxDd1l3MVpLS094ST0g";
+String apiKey = "YOUR_COSM_API_KEY";
 String feedId = "58023";
 
 void setup() {
@@ -37,7 +37,7 @@ void requestData() {
     println("Datastream '"+ id +"' was last updated at "+ lastUpdate);
 
     float currVal = feed.getValue(currDatastream);
-    println("\tcurrVal: "+currVal);
+    println("\tcurVal: "+currVal);
 
     float maxV = feed.getStreamMaxVal(currDatastream);
     println("\tmaxVal: "+maxV);
