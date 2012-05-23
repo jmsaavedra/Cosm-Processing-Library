@@ -3,8 +3,6 @@
  All methods return a String, unless otherwise noted.
  
  http://cosm.com
-
- jos.ph may 2012 
  ****************/
 
 import cosm.*;
@@ -12,12 +10,12 @@ import cosm.*;
 DataIn feed;
 
 String apiKey = "YOUR_COSM_API_KEY";
-String feedId = "504"; //feed URL: https://cosm.com/feeds/58023
+String feedId = "504"; //feed URL: https://cosm.com/feeds/504
 
 void setup() {
 
   feed = new DataIn(this, apiKey, feedId); //instantiate feed
-  feed.setVerbose(false); //optional debug info toggle
+  feed.setVerbose(true); //optional debug info toggle
   requestData();
 }
 
@@ -49,6 +47,7 @@ void requestData() {
   println("longitude: "+       feed.getLon());  //returns a double
   println("exposure: "+        feed.getExposure());
   println("datastreamCount: "+ feed.getDatastreamCount());
+  println("feed tags: "+       feed.getFeedTagsAsList()); //returns a List<String> 
 
   println("\n--- datastream info ---");
 
@@ -68,4 +67,8 @@ void requestData() {
 
   float minVal = feed.getStreamMinVal(currDatastream); //returns a float
   println("minVal: "+minVal);
+  
+  List<String> streamTags = feed.getStreamTagsAsList(0); //returns a List <String> of tags
+  println("tags:" + streamTags);
+  
 }

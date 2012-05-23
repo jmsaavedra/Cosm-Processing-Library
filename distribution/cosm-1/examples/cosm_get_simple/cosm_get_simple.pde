@@ -2,7 +2,8 @@
  Cosm example to manually pull the current value of any datastream
  in the simplest possible way.
 
- In order to read a feed from Cosm, you need an API Key.
+ In order to read a feed from Cosm, you need an API Key. Get one by
+ logging in to Cosm and clicking your username > Keys.
 
  http://cosm.com
  ****************/
@@ -26,13 +27,13 @@ void draw() {
 
 void requestData() {
 
-  feed.connect(); //send request
+  feed.connect(); //send pull request     
 
-  int thisDatastream = 0;               //getValue by stream number (int)
-  //String thisDatastream = "JadePlant";   //or by id name! (String)
-
-  float myVariable = feed.getValue(thisDatastream); /* get current value */
-
-  println("Datastream "+ thisDatastream +" current value: ");
+  /* get current value */
+  
+  float myVariable = feed.getValue(0); //getValue by stream number (int)
+  //float myVariable = feed.getValue("Cactus");   //or by id name (String)
+  
+  println("current value: ");
   println(myVariable);
 }

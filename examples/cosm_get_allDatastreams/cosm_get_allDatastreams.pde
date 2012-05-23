@@ -2,6 +2,7 @@
  Simple way to get all datastreams from the same feed with a for loop.
  
  http://cosm.com
+ jos.ph 2012
  ****************/
  
 import cosm.*;
@@ -9,7 +10,7 @@ import cosm.*;
 DataIn feed;
 
 String apiKey = "YOUR_COSM_API_KEY";
-String feedId = "58023";
+String feedId = "37080"; //http://cosm.com/feeds/37080
 
 void setup() {
 
@@ -29,6 +30,9 @@ void keyPressed(){
 void requestData() {
 
   feed.connect(); //send a request for data
+  println("Feed Title: "+ feed.getTitle());
+  println("Feed Description: "+ feed.getDescription()+"\n");
+  
   for (int i=0; i < feed.getDatastreamCount(); i++) {  
     int currDatastream = i;
 
@@ -44,6 +48,9 @@ void requestData() {
 
     float minV = feed.getStreamMinVal(currDatastream);
     println("\tminVal: "+minV);
-    println();
+    
+    List<String> tags = feed.getStreamTagsAsList(currDatastream);
+    println("\ttags: "+tags);
+    println("-------------------");
   }
 }

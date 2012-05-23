@@ -2,13 +2,13 @@
 # UTF-8 supported.
 
 # The name of your library as you want it formatted.
-name = cosm
+name =cosm
 
 # List of authors. Links can be provided using the syntax [author name](url).
-authorList = [jmsaavedra](http://jos.ph)
+authorList =[Joe Saavedra] (http://jos.ph)
 
 # A web page for your library, NOT a direct link to where to download it.
-url = http://cosm.com
+url =http://cosm.com
 
 # The category of your library, must be one (or many) of the following:
 #   "3D"            "Animation"     "Compilations"      "Data"          
@@ -17,7 +17,7 @@ url = http://cosm.com
 #   "Sound"         "Utilities"     "Typography"        "Video & Vision"
 # 
 # If a value other than those listed is used, your library will listed as 
-# "Other".
+# "Other"
 category = Data
 
 # A short sentence (or fragment) to summarize the library's function. This will 
@@ -25,13 +25,13 @@ category = Data
 # repeating the name of your library here. Also, avoid saying anything redundant 
 # like mentioning that it's a library. This should start with a capitalized 
 # letter, and end with a period.
-sentence = A collection of utilities for pushing and pulling data from Cosm.
+sentence = Tools for pushing data to and pulling data from Cosm.
 
 # Additional information suitable for the Processing website. The value of
 # 'sentence' always will be prepended, so you should start by writing the
 # second sentence here. If your library only works on certain operating systems,
 # mention it here.
-paragraph =  
+paragraph = Uses the Apache HttpClient for Java and json4processing to connect and parse data coming from and going to Cosm.com.
 
 # Links in the 'sentence' and 'paragraph' attributes can be inserted using the
 # same syntax as for authors. 
