@@ -51,7 +51,7 @@ void requestData() {
 
   println("\n--- datastream info ---");
 
-  int currDatastream = 0;
+  int currDatastream = 1; //will get metadata for stream number 1
 
   String id = feed.getStreamId(currDatastream);
   println("datastream id: "+ id);

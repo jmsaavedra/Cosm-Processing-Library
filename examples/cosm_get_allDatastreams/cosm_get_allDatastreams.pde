@@ -2,7 +2,6 @@
  Simple way to get all datastreams from the same feed with a for loop.
  
  http://cosm.com
- jos.ph 2012
  ****************/
  
 import cosm.*;

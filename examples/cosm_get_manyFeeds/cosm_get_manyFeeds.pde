@@ -1,9 +1,8 @@
 /****************
  Cosm example to pull from several Feeds at one time. 
+ dev note:the threading class will be great for this.
  
  http://cosm.com
- 
- jos.ph may 2012 
  ****************/
 
 import cosm.*;
@@ -11,7 +10,7 @@ import cosm.*;
 int numFeeds = 5; //how many feeds do you want to pull
 DataIn[] feed = new DataIn[numFeeds];
 
-String apiKey = "HF9qW31hUvgQ9b9RnUoM5za3BrCSAKxDd1l3MVpLS094ST0g";
+String apiKey = "YOUR_COSM_API_KEY";
 String[] feedid = {
   "49544", "504", "53914", "37080", "40315"  //FeedIDs we are interested in
 }; 
@@ -25,7 +24,7 @@ void setup() {
 }
 
 void draw() {
-  //awesome stuff goes here
+  //crazy viz
 }
 
 void requestData() {

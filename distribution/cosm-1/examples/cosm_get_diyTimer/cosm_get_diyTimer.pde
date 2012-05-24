@@ -23,9 +23,9 @@ void setup() {
 void draw() {
   //awesome stuff goes here
   
-  
-  if((millis()/1000)-timeStamp>interval){
-    timeStamp=millis()/1000;
+  int currSeconds = millis()/1000;
+  if(currSeconds - timeStamp > interval){
+    timeStamp = currSeconds;
     requestData();
   }
 }
