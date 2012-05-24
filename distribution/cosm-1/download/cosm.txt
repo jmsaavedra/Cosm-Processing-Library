@@ -31,7 +31,7 @@ sentence = Tools for pushing data to and pulling data from Cosm.
 # 'sentence' always will be prepended, so you should start by writing the
 # second sentence here. If your library only works on certain operating systems,
 # mention it here.
-paragraph = Uses the Apache HttpClient for Java and json4processing to connect and parse data coming from and going to Cosm.com.
+paragraph = Cosm is a broker for the Internet of Things. It can receive and serve data, up to 100 times a minute per API Key. Visit [Cosm.com](http://cosm.com) to set up a free account and get a unique API Key.  This Java Library uses the Apache HttpClient for Java and json4processing to connect and parse data coming from and going to Cosm.com.
 
 # Links in the 'sentence' and 'paragraph' attributes can be inserted using the
 # same syntax as for authors. 
